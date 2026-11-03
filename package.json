@@ -1,0 +1,15 @@
+{
+  "name": "cse340-course-project",
+  "version": "1.0.0",
+  "description": "CSE 340 Course Project",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2"
+  }
+}
