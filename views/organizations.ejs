@@ -1,43 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <%- include('partials/header', { title: title }) %>
-</head>
-<body>
-  <main class="container">
+<%- include('partials/header', { title: title }) %>
+
+<main class="container">
     <h1>Partner Organizations</h1>
     <p>We work closely with these amazing community organizations to drive impactful service projects:</p>
     
     <div class="org-grid">
       <!-- Organization 1 -->
       <div class="org-card">
-        <img src="/images/community-action.jpg" alt="Volunteers working with Community Action Network" />
+        <img src="/images/brightfuture-logo.png" alt="BrightFuture Builders logo" />
         <div class="org-content">
-          <h3>Community Action Network</h3>
+          <h3>BrightFuture Builders</h3>
           <p>Focused on local educational outreach, youth mentoring, and neighborhood development programs.</p>
         </div>
       </div>
 
       <!-- Organization 2 -->
       <div class="org-card">
-        <img src="/images/green-earth.jpg" alt="Green Earth Initiative park clean-up" />
+        <img src="/images/greenharvest-logo.png" alt="GreenHarvest Growers logo" />
         <div class="org-content">
-          <h3>Green Earth Initiative</h3>
+          <h3>GreenHarvest Growers</h3>
           <p>Dedicated to environmental conservation, community tree planting, and recycling awareness drives.</p>
         </div>
       </div>
 
       <!-- Organization 3 -->
       <div class="org-card">
-        <img src="/images/food-bank.jpg" alt="Volunteers organizing food boxes at the food bank" />
+        <img src="/images/unityserve-logo.png" alt="UnityServe Volunteers logo" />
         <div class="org-content">
-          <h3>Community Food Bank</h3>
+          <h3>UnityServe Volunteers</h3>
           <p>Providing essential food assistance, nutritional resources, and emergency relief to families in need.</p>
         </div>
       </div>
     </div>
-  </main>
+</main>
 
-  <%- include('partials/footer') %>
-</body>
-</html>
+<%- include('partials/footer') %>
