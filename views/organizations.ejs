@@ -1,36 +1,21 @@
 <%- include('partials/header', { title: title }) %>
 
 <main class="container">
-    <h1>Partner Organizations</h1>
+    <h1><%= title %></h1>
     <p>We work closely with these amazing community organizations to drive impactful service projects:</p>
     
     <div class="org-grid">
-      <!-- Organization 1 -->
-      <div class="org-card">
-        <img src="/images/brightfuture-logo.png" alt="BrightFuture Builders logo" />
-        <div class="org-content">
-          <h3>BrightFuture Builders</h3>
-          <p>Focused on local educational outreach, youth mentoring, and neighborhood development programs.</p>
-        </div>
-      </div>
-
-      <!-- Organization 2 -->
-      <div class="org-card">
-        <img src="/images/greenharvest-logo.png" alt="GreenHarvest Growers logo" />
-        <div class="org-content">
-          <h3>GreenHarvest Growers</h3>
-          <p>Dedicated to environmental conservation, community tree planting, and recycling awareness drives.</p>
-        </div>
-      </div>
-
-      <!-- Organization 3 -->
-      <div class="org-card">
-        <img src="/images/unityserve-logo.png" alt="UnityServe Volunteers logo" />
-        <div class="org-content">
-          <h3>UnityServe Volunteers</h3>
-          <p>Providing essential food assistance, nutritional resources, and emergency relief to families in need.</p>
-        </div>
-      </div>
+        <% organizations.forEach(organization => { %>
+            <!-- Dynamic Organization Card -->
+            <div class="org-card">
+                <img src="/images/<%= organization.logo_filename %>" alt="<%= organization.name %> logo" />
+                <div class="org-content">
+                    <h3><%= organization.name %></h3>
+                    <p><%= organization.description %></p>
+                    <p><a href="mailto:<%= organization.contact_email %>">Contact Us</a></p>
+                </div>
+            </div>
+        <% }); %>
     </div>
 </main>
 
