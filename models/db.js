@@ -1,12 +1,17 @@
+import 'dotenv/config';
 import { Pool } from 'pg';
 
+// Check if the connection string points to a local instance or a remote cloud database
+const dbUrl = process.env.DB_URL || '';
+const isLocal = dbUrl.includes('localhost') || dbUrl.includes('127.0.0.1');
+
 const pool = new Pool({
-    connectionString: process.env.DB_URL,
-    ssl: {
+    connectionString: dbUrl,
+    // Use SSL for remote databases; disable only if it's strictly local
+    ssl: isLocal ? false : {
         rejectUnauthorized: false
     }
 });
-
 let db = null;
 
 if (process.env.NODE_ENV === 'development' && process.env.ENABLE_SQL_LOGGING === 'true') {

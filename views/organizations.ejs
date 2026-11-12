@@ -1,18 +1,22 @@
 <%- include('partials/header', { title: title }) %>
 
 <main class="container">
-    <h1><%= title %></h1>
+    <h1>Organizations</h1>
     <p>We work closely with these amazing community organizations to drive impactful service projects:</p>
     
     <div class="org-grid">
         <% organizations.forEach(organization => { %>
             <!-- Dynamic Organization Card -->
             <div class="org-card">
-                <img src="/images/<%= organization.logo_filename %>" alt="<%= organization.name %> logo" />
+                <% if (organization.logo_filename) { %>
+                    <img src="/images/<%= organization.logo_filename %>" alt="<%= organization.name %> logo" />
+                <% } %>
                 <div class="org-content">
                     <h3><%= organization.name %></h3>
                     <p><%= organization.description %></p>
-                    <p><a href="mailto:<%= organization.contact_email %>">Contact Us</a></p>
+                    <% if (organization.contact_email) { %>
+                        <p><a href="mailto:<%= organization.contact_email %>">Contact Us</a></p>
+                    <% } %>
                 </div>
             </div>
         <% }); %>
