@@ -6,6 +6,8 @@ export async function getProjects() {
             p.project_id, 
             p.title, 
             p.description, 
+            p.location, 
+            p.date, 
             o.name AS organization_name, 
             o.organization_id 
         FROM public.projects p 
