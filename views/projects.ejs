@@ -8,9 +8,10 @@
         <% if (projects && projects.length > 0) { %>
             <% projects.forEach(project => { %>
                 <li style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 1rem;">
-                    <h3>
+                    <!-- Fixed heading hierarchy: changed h3 to h2 -->
+                    <h2>
                         <a href="/project/<%= project.project_id %>"><%= project.title %></a>
-                    </h3>
+                    </h2>
                     <p><%= project.description %></p>
                     <p><strong>Location:</strong> <%= project.location %></p>
                     <p><strong>Date:</strong> <%= project.date %></p>
