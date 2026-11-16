@@ -1,0 +1,25 @@
+<%- include('partials/header', { title: title }) %>
+
+<main class="container">
+    <h1>Category: <%= category.name %></h1>
+    <p>Explore all service projects listed under this focus area:</p>
+    
+    <ul class="project-list">
+        <% if (projects && projects.length > 0) { %>
+            <% projects.forEach(project => { %>
+                <li class="project-item">
+                    <h2>
+                        <a href="/project/<%= project.project_id %>"><%= project.title %></a>
+                    </h2>
+                    <p><strong>Organization:</strong> <%= project.organization_name %></p>
+                    <p><strong>Location:</strong> <%= project.location %> | <strong>Date:</strong> <%= project.date %></p>
+                    <p><%= project.description %></p>
+                </li>
+            <% }); %>
+        <% } else { %>
+            <p>No service projects found for this category.</p>
+        <% } %>
+    </ul>
+</main>
+
+<%- include('partials/footer') %>

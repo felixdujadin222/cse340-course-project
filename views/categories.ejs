@@ -6,7 +6,9 @@
     
     <ul class="category-list">
         <% categories.forEach(category => { %>
-            <li class="category-card"><%= category.name %></li>
+            <li class="category-card">
+                <a href="/category/<%= category.category_id %>"><%= category.name %></a>
+            </li>
         <% }); %>
     </ul>
 </main>

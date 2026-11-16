@@ -2,10 +2,11 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
-import { testConnection } from './models/db.js'; // Import test connection
+import { testConnection } from './models/db.js';
 import { getOrganizations } from './models/organizations.js';
 import { getCategories } from './models/categories.js';
-import { getProjects } from './models/projects.js'; // <-- Added projects model import
+import { getProjects } from './models/projects.js';
+import categoryRoutes from './routes/categoryRoutes.js'; // <-- Import your category routes
 
 dotenv.config();
 
@@ -36,7 +37,6 @@ app.get('/', (req, res) => {
 app.get('/organizations', async (req, res) => {
     try {
         const organizations = await getOrganizations();
-        console.log('Organizations from DB:', organizations); // For testing in the console
         res.render('organizations', { title: 'Organizations', organizations });
     } catch (error) {
         console.error('Error fetching organizations:', error);
@@ -44,7 +44,7 @@ app.get('/organizations', async (req, res) => {
     }
 });
 
-// Updated route to fetch projects dynamically from the database using getProjects()
+// Route to fetch projects dynamically from the database using getProjects()
 app.get('/projects', async (req, res) => {
     try {
         const projects = await getProjects();
@@ -67,10 +67,13 @@ app.get('/categories', async (req, res) => {
     }
 });
 
+// Mount modular category routes (handles /category/:id)
+app.use('/', categoryRoutes);
+
 // Start server and test DB connection asynchronously
 const startServer = async () => {
   try {
-    await testConnection(); // Test the database connection on startup
+    await testConnection();
     app.listen(port, () => {
       console.log(`Server is running at http://localhost:${port}`);
       console.log(`Environment: ${NODE_ENV}`);

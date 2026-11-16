@@ -1,0 +1,23 @@
+<!-- Add this section inside your project details view where appropriate -->
+<div class="category-tags" style="margin-top: 1.5rem;">
+    <strong>Categories:</strong>
+    <% if (categories && categories.length > 0) { %>
+        <% categories.forEach(cat => { %>
+            <a href="/category/<%= cat.category_id %>" class="tag-badge" style="margin-right: 0.5rem; padding: 0.3rem 0.6rem; background: #e2e8f0; border-radius: 4px; text-decoration: none; color: #2d3748;"><%= cat.name %></a>
+        <% }) %>
+    <% } else { %>
+        <span>None</span>
+    <% } %>
+</div>
+
+<!-- Inside your project details view, add this where you want the tags to appear -->
+<div class="category-tags" style="margin-top: 1.5rem;">
+    <strong>Categories:</strong>
+    <% if (categories && categories.length > 0) { %>
+        <% categories.forEach(cat => { %>
+            <a href="/category/<%= cat.category_id %>" class="tag-badge" style="margin-right: 0.5rem; padding: 0.2rem 0.5rem; background: #e2e8f0; border-radius: 4px; text-decoration: none; color: #2d3748;"><%= cat.name %></a>
+        <% }) %>
+    <% } else { %>
+        <span>None</span>
+    <% } %>
+</div>s
