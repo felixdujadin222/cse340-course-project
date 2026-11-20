@@ -9,11 +9,14 @@
             <!-- Dynamic Organization Card -->
             <div class="org-card">
                 <% if (organization.logo_filename) { %>
-                    <img src="/images/<%= organization.logo_filename %>" alt="<%= organization.name %> logo" />
+                    <a href="/organization/<%= organization.organization_id %>">
+                        <img src="/images/<%= organization.logo_filename %>" alt="<%= organization.name %> logo" />
+                    </a>
                 <% } %>
                 <div class="org-content">
-                    <h3><%= organization.name %></h3>
+                    <h3><a href="/organization/<%= organization.organization_id %>"><%= organization.name %></a></h3>
                     <p><%= organization.description %></p>
+                    <p><a href="/organization/<%= organization.organization_id %>">View Organization Details</a></p>
                     <% if (organization.contact_email) { %>
                         <p><a href="mailto:<%= organization.contact_email %>">Contact Us</a></p>
                     <% } %>

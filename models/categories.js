@@ -3,7 +3,7 @@ import db from './db.js';
 /**
  * Retrieves all categories from the database.
  */
-export async function getCategories() {
+export const getCategories = async () => {
     const query = `
         SELECT category_id, name
         FROM public.categories;
@@ -11,12 +11,12 @@ export async function getCategories() {
 
     const result = await db.query(query);
     return result.rows;
-}
+};
 
 /**
  * Retrieves a single category by its ID.
  */
-export async function getCategoryById(categoryId) {
+export const getCategoryById = async (categoryId) => {
     const query = `
         SELECT category_id, name
         FROM public.categories
@@ -25,12 +25,12 @@ export async function getCategoryById(categoryId) {
 
     const result = await db.query(query, [categoryId]);
     return result.rows[0];
-}
+};
 
 /**
  * Retrieves all categories for a given service project (for category tags).
  */
-export async function getCategoriesByProjectId(projectId) {
+export const getCategoriesByProjectId = async (projectId) => {
     const query = `
         SELECT c.category_id, c.name 
         FROM public.categories c
@@ -40,12 +40,12 @@ export async function getCategoriesByProjectId(projectId) {
 
     const result = await db.query(query, [projectId]);
     return result.rows;
-}
+};
 
 /**
  * Retrieves all service projects for a given category (for category details pages).
  */
-export async function getProjectsByCategoryId(categoryId) {
+export const getProjectsByCategoryId = async (categoryId) => {
     const query = `
         SELECT 
             p.project_id, 
@@ -63,4 +63,4 @@ export async function getProjectsByCategoryId(categoryId) {
 
     const result = await db.query(query, [categoryId]);
     return result.rows;
-}
+};
