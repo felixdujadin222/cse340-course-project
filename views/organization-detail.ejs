@@ -4,7 +4,13 @@
     <h1><%= organization.name %></h1>
 
     <% if (organization.logo_filename) { %>
-        <img src="/images/<%= organization.logo_filename %>" alt="<%= organization.name %> logo" />
+        <img
+            src="/images/<%= organization.logo_filename %>"
+            alt="<%= organization.name %> logo"
+            width="120"
+            height="120"
+            style="height: auto;"
+        />
     <% } %>
 
     <p><%= organization.description %></p>
@@ -15,10 +21,13 @@
 
     <h2>Service Projects</h2>
     <% if (projects && projects.length > 0) { %>
-        <ul>
+        <ul style="list-style: none; padding-left: 0; display: flex; flex-direction: column; gap: 0.5rem;">
             <% projects.forEach(project => { %>
                 <li>
-                    <a href="/project/<%= project.project_id %>"><%= project.title %></a>
+                    <a
+                        href="/project/<%= project.project_id %>"
+                        style="display: inline-flex; align-items: center; min-height: 44px; padding: 0.5rem 0.75rem;"
+                    ><%= project.title %></a>
                 </li>
             <% }) %>
         </ul>
@@ -26,7 +35,7 @@
         <p>No service projects listed for this organization yet.</p>
     <% } %>
 
-    <p><a href="/organizations">Back to Organizations</a></p>
+    <p style="margin-top: 1.5rem;"><a href="/organizations">Back to Organizations</a></p>
 </main>
 
 <%- include('partials/footer') %>
