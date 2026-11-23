@@ -1,23 +1,35 @@
-<!-- Add this section inside your project details view where appropriate -->
-<div class="category-tags" style="margin-top: 1.5rem;">
-    <strong>Categories:</strong>
-    <% if (categories && categories.length > 0) { %>
-        <% categories.forEach(cat => { %>
-            <a href="/category/<%= cat.category_id %>" class="tag-badge" style="margin-right: 0.5rem; padding: 0.3rem 0.6rem; background: #e2e8f0; border-radius: 4px; text-decoration: none; color: #2d3748;"><%= cat.name %></a>
-        <% }) %>
-    <% } else { %>
-        <span>None</span>
-    <% } %>
-</div>
+<%- include('partials/header', { title: title }) %>
 
-<!-- Inside your project details view, add this where you want the tags to appear -->
-<div class="category-tags" style="margin-top: 1.5rem;">
-    <strong>Categories:</strong>
-    <% if (categories && categories.length > 0) { %>
-        <% categories.forEach(cat => { %>
-            <a href="/category/<%= cat.category_id %>" class="tag-badge" style="margin-right: 0.5rem; padding: 0.2rem 0.5rem; background: #e2e8f0; border-radius: 4px; text-decoration: none; color: #2d3748;"><%= cat.name %></a>
-        <% }) %>
-    <% } else { %>
-        <span>None</span>
+<main class="container">
+    <h1><%= project.title %></h1>
+
+    <p>
+        <strong>Organization:</strong>
+        <a href="/organization/<%= project.organization_id %>"><%= project.organization_name %></a>
+    </p>
+
+    <% if (project.location) { %>
+        <p><strong>Location:</strong> <%= project.location %></p>
     <% } %>
-</div>s
+
+    <% if (project.date) { %>
+        <p><strong>Date:</strong> <%= project.date %></p>
+    <% } %>
+
+    <p><%= project.description %></p>
+
+    <div class="category-tags" style="margin-top: 1.5rem;">
+        <strong>Categories:</strong>
+        <% if (categories && categories.length > 0) { %>
+            <% categories.forEach(cat => { %>
+                <a href="/category/<%= cat.category_id %>" class="tag-badge" style="margin-right: 0.5rem; padding: 0.3rem 0.6rem; background: #e2e8f0; border-radius: 4px; text-decoration: none; color: #2d3748;"><%= cat.name %></a>
+            <% }) %>
+        <% } else { %>
+            <span>None</span>
+        <% } %>
+    </div>
+
+    <p style="margin-top: 1.5rem;"><a href="/projects">Back to Service Projects</a></p>
+</main>
+
+<%- include('partials/footer') %>
