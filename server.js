@@ -22,6 +22,9 @@ app.set('views', path.join(__dirname, 'views'));
 // Static middleware for public folder (CSS, images)
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Parse URL-encoded form bodies (required for POST forms)
+app.use(express.urlencoded({ extended: true }));
+
 // Mount all application routes
 app.use('/', routes);
 

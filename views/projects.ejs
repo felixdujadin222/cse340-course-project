@@ -3,12 +3,13 @@
 <main class="container">
     <h1>Service Projects</h1>
     <p>Discover our ongoing and upcoming service projects designed to support those in need.</p>
+
+    <p><a href="/new-project" class="btn">Create New Service Project</a></p>
     
     <ul class="project-list" style="list-style: none; padding: 0; margin-top: 1.5rem;">
         <% if (projects && projects.length > 0) { %>
             <% projects.forEach(project => { %>
                 <li style="background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 1rem;">
-                    <!-- Fixed heading hierarchy: changed h3 to h2 -->
                     <h2>
                         <a href="/project/<%= project.project_id %>"><%= project.title %></a>
                     </h2>
@@ -18,6 +19,10 @@
                     <p class="organization-link">
                         <strong>Organization:</strong> 
                         <a href="/organization/<%= project.organization_id %>"><%= project.organization_name %></a>
+                    </p>
+                    <p>
+                        <a href="/project/<%= project.project_id %>">View Project Details</a> |
+                        <a href="/edit-project/<%= project.project_id %>">Edit</a>
                     </p>
                 </li>
             <% }) %>

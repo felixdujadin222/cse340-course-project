@@ -1,7 +1,12 @@
 import express from 'express';
+import { body } from 'express-validator';
 import {
     renderCategories,
-    renderCategoryDetails
+    renderCategoryDetails,
+    showNewCategoryForm,
+    handleCreateCategory,
+    showEditCategoryForm,
+    handleUpdateCategory
 } from './controllers/categoryController.js';
 import {
     showOrganizations,
@@ -13,6 +18,15 @@ import {
 } from './controllers/projectsController.js';
 
 const router = express.Router();
+
+const categoryValidation = [
+    body('name')
+        .trim()
+        .notEmpty()
+        .withMessage('Category name is required.')
+        .isLength({ min: 3, max: 100 })
+        .withMessage('Category name must be between 3 and 100 characters.')
+];
 
 router.get('/', (req, res) => {
     res.render('index', { title: 'Home' });
@@ -29,5 +43,9 @@ router.get('/project/:id', showProjectDetail);
 // Categories
 router.get('/categories', renderCategories);
 router.get('/category/:id', renderCategoryDetails);
+router.get('/new-category', showNewCategoryForm);
+router.post('/new-category', categoryValidation, handleCreateCategory);
+router.get('/edit-category/:id', showEditCategoryForm);
+router.post('/edit-category/:id', categoryValidation, handleUpdateCategory);
 
 export default router;

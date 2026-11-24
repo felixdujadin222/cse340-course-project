@@ -3,11 +3,14 @@
 <main class="container">
     <h1><%= title %></h1>
     <p>Explore our service projects categorized by their primary focus areas:</p>
-    
+
+    <p><a href="/new-category" class="btn">Create New Category</a></p>
+
     <ul class="category-list">
         <% categories.forEach(category => { %>
             <li class="category-card">
                 <a href="/category/<%= category.category_id %>"><%= category.name %></a>
+                <a href="/edit-category/<%= category.category_id %>" class="edit-link">Edit</a>
             </li>
         <% }); %>
     </ul>

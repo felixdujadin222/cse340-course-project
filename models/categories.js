@@ -32,7 +32,7 @@ export const getCategoryById = async (categoryId) => {
  */
 export const getCategoriesByProjectId = async (projectId) => {
     const query = `
-        SELECT c.category_id, c.name 
+        SELECT DISTINCT c.category_id, c.name
         FROM public.categories c
         INNER JOIN public.project_categories pc ON c.category_id = pc.category_id
         WHERE pc.project_id = $1;
@@ -63,4 +63,33 @@ export const getProjectsByCategoryId = async (categoryId) => {
 
     const result = await db.query(query, [categoryId]);
     return result.rows;
+};
+
+/**
+ * Inserts a new category into the database.
+ */
+export const createCategory = async (name) => {
+    const query = `
+        INSERT INTO public.categories (name)
+        VALUES ($1)
+        RETURNING category_id, name;
+    `;
+
+    const result = await db.query(query, [name]);
+    return result.rows[0];
+};
+
+/**
+ * Updates an existing category by its ID.
+ */
+export const updateCategory = async (categoryId, name) => {
+    const query = `
+        UPDATE public.categories
+        SET name = $1
+        WHERE category_id = $2
+        RETURNING category_id, name;
+    `;
+
+    const result = await db.query(query, [name, categoryId]);
+    return result.rows[0];
 };
